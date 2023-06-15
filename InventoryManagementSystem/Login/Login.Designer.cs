@@ -48,7 +48,7 @@
             this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(233)))), ((int)(((byte)(249)))));
             this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(55)))), ((int)(((byte)(238)))));
             this.guna2GradientPanel1.Location = new System.Drawing.Point(-218, -24);
-            this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
             this.guna2GradientPanel1.Size = new System.Drawing.Size(651, 739);
             this.guna2GradientPanel1.TabIndex = 0;
@@ -57,13 +57,12 @@
             // 
             this.pictureBox1.Image = global::InventoryManagementSystem.Properties.Resources._11_removebg_preview;
             this.pictureBox1.Location = new System.Drawing.Point(505, 9);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(204, 183);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label1
             // 
@@ -76,7 +75,6 @@
             this.label1.Size = new System.Drawing.Size(83, 21);
             this.label1.TabIndex = 19;
             this.label1.Text = "Username";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -89,7 +87,6 @@
             this.label2.Size = new System.Drawing.Size(79, 21);
             this.label2.TabIndex = 21;
             this.label2.Text = "Password";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtPassword
             // 
@@ -116,9 +113,8 @@
             this.txtPassword.PlaceholderText = "";
             this.txtPassword.SelectedText = "";
             this.txtPassword.Size = new System.Drawing.Size(288, 40);
-            this.txtPassword.TabIndex = 20;
+            this.txtPassword.TabIndex = 2;
             this.txtPassword.TextOffset = new System.Drawing.Point(10, 0);
-            this.txtPassword.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
             // 
             // lblForgetPassword
             // 
@@ -149,6 +145,7 @@
             this.btnLogin.TabIndex = 23;
             this.btnLogin.Text = "Log in";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnLogin_KeyPress);
             // 
             // txtusername
             // 
@@ -175,7 +172,7 @@
             this.txtusername.PlaceholderText = "example: jawad123";
             this.txtusername.SelectedText = "";
             this.txtusername.Size = new System.Drawing.Size(288, 40);
-            this.txtusername.TabIndex = 24;
+            this.txtusername.TabIndex = 1;
             this.txtusername.TextOffset = new System.Drawing.Point(10, 0);
             // 
             // cmbRole
@@ -199,7 +196,7 @@
             this.cmbRole.Margin = new System.Windows.Forms.Padding(2);
             this.cmbRole.Name = "cmbRole";
             this.cmbRole.Size = new System.Drawing.Size(288, 36);
-            this.cmbRole.TabIndex = 200;
+            this.cmbRole.TabIndex = 3;
             // 
             // label3
             // 
@@ -241,9 +238,11 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.guna2GradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

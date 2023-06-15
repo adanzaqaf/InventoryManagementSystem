@@ -23,26 +23,6 @@ namespace InventoryManagementSystem.Login
             InitializeComponent();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             try
@@ -125,6 +105,89 @@ namespace InventoryManagementSystem.Login
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                try
+                {
+                    role = cmbRole.SelectedItem.ToString();
+                    if (role == "Admin")
+                    {
+                        cm = new SqlCommand("EXEC GetAdminCredentials @Username, @Password;", con);
+                        cm.Parameters.AddWithValue("@Username", txtusername.Text);
+                        cm.Parameters.AddWithValue("@Password", txtPassword.Text);
+                        con.Open();
+                        dr = cm.ExecuteReader();
+                        dr.Read();
+                        if (dr.HasRows)
+                        {
+                            con.Close();
+                            formDashboard db = new formDashboard(role);
+                            this.Hide();
+                            db.ShowDialog();
+                        }
+                        else
+                        {
+                            con.Close();
+                            MessageBox.Show("Invalid Username or Password..!", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else if (role == "Cashier")
+                    {
+                        cm = new SqlCommand("EXEC GetCashierCredentials @Username, @Password;", con);
+                        cm.Parameters.AddWithValue("@Username", txtusername.Text);
+                        cm.Parameters.AddWithValue("@Password", txtPassword.Text);
+                        con.Open();
+                        dr = cm.ExecuteReader();
+                        dr.Read();
+                        if (dr.HasRows)
+                        {
+                            con.Close();
+                            formDashboard db = new formDashboard(role);
+                            this.Hide();
+                            db.ShowDialog();
+                        }
+                        else
+                        {
+                            con.Close();
+                            MessageBox.Show("Invalid Username or Password..!", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else if (role == "Salesman")
+                    {
+                        cm = new SqlCommand("EXEC GetSalesmanCredentials @Username, @Password;", con);
+                        cm.Parameters.AddWithValue("@Username", txtusername.Text);
+                        cm.Parameters.AddWithValue("@Password", txtPassword.Text);
+                        con.Open();
+                        dr = cm.ExecuteReader();
+                        dr.Read();
+                        if (dr.HasRows)
+                        {
+                            con.Close();
+                            formDashboard db = new formDashboard(role);
+                            this.Hide();
+                            db.ShowDialog();
+                        }
+                        else
+                        {
+                            con.Close();
+                            MessageBox.Show("Invalid Username or Password..!", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please Select a Valid Role..!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }
