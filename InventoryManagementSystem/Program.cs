@@ -18,7 +18,7 @@ namespace InventoryManagementSystem
             Application.SetCompatibleTextRenderingDefault(false);
             string role = "Admin";
 
-            Application.Run(new formDashboard(role));
+            Application.Run(new Login.Login());
         }
     }
 }
